@@ -3,8 +3,10 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../common/navbar/index";
-import ProductInformation from './ProductInformation'
+import ProductInformation from "./ProductInformation";
+import ProductRecommendation from './ProductRecommendation'
 import Hero from "./Hero";
+import Footer from "../common/Footer";
 export default function BookingItem() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -24,10 +26,17 @@ export default function BookingItem() {
       style={{
         backgroundImage: "linear-gradient(135deg, #f5f7fa, #fed6e3)",
       }}
+      className="overflow-hidden"
     >
       <Navbar />
-      <Hero/>
-      <ProductInformation/>
+      <div className="mt-40 w-full">
+        <Hero />
+        <div className="w-[80%] mx-auto max-w-custom">
+          <ProductInformation />
+          <ProductRecommendation/>
+          <Footer/>
+        </div>
+      </div>
     </div>
   );
 }
