@@ -71,7 +71,7 @@ const journalList = [
 ];
 export default function Banners() {
   return (
-    <div className="w-full md:mt-40">
+    <div className="w-full md:mt-48">
       <div className="min-h-[400px] py-20 w-full mx-auto flex items-center justify-center relative">
         <img
           // src={data?.backgroundImage}

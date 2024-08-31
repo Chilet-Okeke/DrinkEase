@@ -50,7 +50,7 @@ const ProductRecommendation = () => {
   return (
     <ProductrecommendationStyles
       style={{ gap: ".2rem" }}
-      className="flex max-w-custom w-[90%] md:w-[80%] py-12 flex-col mx-auto justify-center item-center"
+      className="flex w-full flex-col mx-auto justify-center item-center"
     >
       <div className="w-full bg-white px-8 md:px-32 py-32 max-w-custom mx-auto gap-32 flex flex-col">
         <h2 className="uppercase md:text-9xl text-6xl underline font-black text-start w-full mx-auto family2">
