@@ -14,6 +14,7 @@ const HomeIndex = () => {
         {/* <Hero /> */}
         <ProductList/>
         <Banners/>
+        <Footer /> 
       </div>
       {/* <Newsletter />
       <Footer /> */}

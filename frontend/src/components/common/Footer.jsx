@@ -1,113 +1,66 @@
 import { Link } from "react-router-dom";
 
-const navbarCenterList = [
-  {
-    title: "Home",
-    icon: "./images/home.png",
-  },
-  {
-    title: "Rooms",
-    icon: "./images/svg_1.png",
-  },
-  {
-    title: "Schedule",
-    icon: "./About/svg_4.png",
-  },
-
-  {
-    title: "Contact",
-    icon: "./images/svg_2.png",
-  },
-
-  // {
-  //   title: "Transaction",
-  //   icon: "./images/svg_3.png",
-  // },
+const navbarList1 = ["Home", "About us", "Journal", "Reviews", "Contact"];
+const navbarList2 = [
+  "Terms and Conditions",
+  "FAQ",
+  "Changelog",
+  "Image license info",
+  "Style guide",
+  "Instructions",
 ];
+const navbarList3 = ["Shop all", "Yogurt", "Lactose•free"];
 const Footer = () => {
   return (
     <>
       <div
-        className="w-full  py-16 relative bg-[#1D1D1D] flex items-center justify-center
-   gap-8"
+        style={{
+          backgroundImage: "linear-gradient(319deg, #fff1eb, #ace0f9)",
+        }}
+        className="w-full px-4 md:px-16 py-32 relative  grid sm:grid-cols-2 justify-center gap-8"
       >
-        <div
-          className="w-[90%] mx-auto max-w-custom_1 justify-between z-40 grid md:grid-cols-2 lg:grid-cols-3
-      gap-8 md:gap-2"
-        >
-          <div className="flex flex-col gap-6">
-            <img
-              src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-20.png"
-              alt=""
-              className="w-12 md:w-16"
-            />
-            <h3 className="text-2xl text-white font-booking_font4">
-              Phone Support
-              <span className="block uppercase text-sm font-booking_font text-grey">
-                SOCIAL MEDIA CHANNELS
-              </span>
-            </h3>
-            <h3 className="text-2xl text-white font-booking_font4">
-              + 01 345 647 745
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-6">
-            <img
-              src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-19.png"
-              alt=""
-              className="w-12 md:w-16"
-            />
-            <h3 className="text-2xl text-white font-booking_font4">
-              Connect With Us
-              <span className="block uppercase text-sm font-booking_font text-grey">
-                24 HOURS A DAY
-              </span>
-            </h3>
-            <h3 className="text-2xl text-white font-booking_font4">
-              + 01 345 647 745
-            </h3>
-          </div>
-          <div className="flex flex-col gap-6">
-            <img
-              src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-20.png"
-              alt=""
-              className="w-12 md:w-16"
-            />
-            <h3 className="text-2xl flex flex-col gap-4 text-white font-booking_font4">
-              Contact Us
-              <span className="block leading-[1.5]  text-base font-booking_font text-grey">
-                Reservation : + 202 303 404
-              </span>
-              <span className="block leading-[1.5]  text-base font-booking_font text-grey">
-                Booking : + 414 123 404
-              </span>
-            </h3>
+        <div className="w-full flex flex-col gap-8 border-r border-[rgba(0,0,0,.2)]">
+          <h4 className="text-3xl family2 font-black">
+            Keep in touch and receive fun updates!
+          </h4>
+          <div className="flex flex-col gap-4">
+            <h5 className="text-xl">Customer Support Center</h5>
+            <ul>
+              <li className="text-base family1">Monday – Friday</li>{" "}
+              <li className="text-base family1">9am – 5pm PST</li>{" "}
+              <li className="text-base family1">
+               hello@victorcancode.com
+               <span className="block">+234 7532 7804</span>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div
-        className="w-full  py-4 relative bg-[#000] flex items-center justify-center
-   gap-8"
-      >
-        <div
-          className="w-[90%] mx-auto max-w-custom_1 flex items-center justify-between
-       gap-4"
-        >
-          <div className="items-center justify-start flex gap-1">
-            {navbarCenterList?.map((list, index) => {
-              return (
-                <Link
-                  to={"#"}
-                  key={index}
-                  className={`text-sm 
-                font-normal  text-white flex items-center gap-2 p-3 px-4 rounded-[40px]`}
-                >
-                  {/* <img src={list?.icon} className="w-4" alt="" /> */}
-                  {list?.title}
-                </Link>
-              );
-            })}
+        <div className="w-full pl-2 grid sm:grid-cols-3 gap-4 flex-col">
+          <div className="flex flex-col gap-4">
+            <h4 className="text-2xl family2 font-black">Company</h4>
+            <div className="flex-col flex gap-1">
+              {navbarList1?.map((data, index) => {
+                return <div className="text-base">{data}</div>;
+              })}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <h4 className="text-2xl family2 font-black">Customer Care</h4>
+            <div className="flex-col flex gap-1">
+              {navbarList2?.map((data, index) => {
+                return <div className="text-base">{data}</div>;
+              })}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <h4 className="text-2xl family2 font-black">Shop</h4>
+            <div className="flex-col flex gap-1">
+              {navbarList3?.map((data, index) => {
+                return <div className="text-base">{data}</div>;
+              })}
+            </div>
           </div>
         </div>
       </div>
