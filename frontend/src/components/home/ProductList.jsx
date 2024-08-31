@@ -41,8 +41,8 @@ const ProductList = () => {
   });
   return (
     <div className="w-full py-16">
-      <div className="w-[95%] flex items-start flex-col h-full gap-8 justify-between max-w-custom mx-auto">
-        <div className="w-full flex flex-col gap-12">
+      <div className="w-[100%] flex items-start flex-col h-full gap-8 justify-between max-w-custom mx-auto">
+        {/* <div className="w-full flex flex-col gap-12">
           <h1 className="text-8xl font-normal">Made with passion</h1>
 
           <div className="flex md:justify-end">
@@ -52,8 +52,8 @@ const ProductList = () => {
               watches, TVs, kiosks, and voice assistants.
             </span>
           </div>
-        </div>
-        <div ref={containerRef} className="w-full">
+        </div> */}
+        <div ref={containerRef} className="w-full mb-[36vh] ">
           {productData?.map((data, index) => {
             const targetScale = 1 - (productData.length - 1) * 0.009;
             return (

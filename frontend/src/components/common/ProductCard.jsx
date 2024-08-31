@@ -19,44 +19,58 @@ const ProductCard = ({ data, index, progress, targetScale, range }) => {
       <motion.div
         ref={containerRef}
         style={{
-          scale: cardScale,
+          // scale: cardScale,
           color: `${data?.color}`,
           top: `calc(15vh + ${index * 100}px) `,
         }}
-        className="flex flex-col object-cover h-[700px] border-2 overflow-hidden border-[rgb(255,255,255)] lg:h-[100vh] gap-4 relative rounded-[20px] w-full"
+        className="flex flex-col object-cover h-[700px] border-2 overflow-hidden border-[rgb(255,255,255)] lg:h-[100vh] gap-4 relative rounded-t-[40px] w-full"
       >
-        <img
-          src={data?.backgroundImage}
-          alt=""
-          className="absolute z-10 object-cover w-full h-full"
-        />
-        <div className="w-full z-40 h-full absolute bg-[rgba(0,0,0,.2)]"></div>
-        <div className="w-full h-full z-[60] pt-20 justify-center relative flex">
-          <Link
-            style={{ scale }}
-            className="flex flex-col items-center  justify-center bg-[#fff] h-[400px] w-[400px] rounded-[50%] z-20 gap-4"
-            to={`/work/${data?.title}`}
-          >
-            <div className="flex flex-col justify-center items-center gap-1">
-              <h4 className="text-3xl font-bold">{data?.title}</h4>
-              <span className="text-sm text-grey capitalize family1">
-                <span className="line-through"> $ 3.99 USD</span>$ 2.99 USD
-              </span>
-            </div>
-            <div className="w-32">
-              <img src={data?.image} className="w-full object-cover" alt="" />
-            </div>
-            <button
-              style={{
-                backgroundColor: `${data?.background}`,
-                transition: "all 1s",
-              }}
-              className="h-16 w-40 hover:text-white rounded-full uppercase family2 text-base md:text-base font-black"
+        {data?.backgroundImage ? (
+          <img
+            src={data?.backgroundImage}
+            alt=""
+            className="absolute z-10 object-cover w-full h-full"
+          />
+        ) : (
+          <div className="w-full p-16 bg-[#000] h-full">
+            <Link to={`/products`} className="text-3xl text-white">
+              See All Product
+              {/* <Biar */}
+            </Link>
+          </div>
+        )}
+
+        {data?.backgroundImage && (
+          <div className="w-full z-40 h-full absolute bg-[rgba(0,0,0,.2)]"></div>
+        )}
+        {data?.backgroundImage && (
+          <div className="w-full h-full z-[60] pt-20 justify-center relative flex">
+            <Link
+              style={{ scale }}
+              className="flex flex-col items-center  justify-center bg-[#fff] h-[400px] w-[400px] rounded-[50%] z-20 gap-4"
+              to={`/product/${data?.title}`}
             >
-              <Curtain bgColor={"#000"}>View Product</Curtain>
-            </button>
-          </Link>
-        </div>
+              <div className="flex flex-col justify-center items-center gap-1">
+                <h4 className="text-3xl font-bold">{data?.title}</h4>
+                <span className="text-sm text-grey capitalize family1">
+                  <span className="line-through"> $ 3.99 USD</span>$ 2.99 USD
+                </span>
+              </div>
+              <div className="w-32">
+                <img src={data?.image} className="w-full object-cover" alt="" />
+              </div>
+              <button
+                style={{
+                  backgroundColor: `${data?.background}`,
+                  transition: "all 1s",
+                }}
+                className="h-16 w-40 hover:text-white rounded-full uppercase family2 text-base md:text-base font-black"
+              >
+                <Curtain bgColor={"#000"}>View Product</Curtain>
+              </button>
+            </Link>
+          </div>
+        )}
       </motion.div>
     </div>
   );

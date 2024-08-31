@@ -20,12 +20,12 @@ export const productData = [
     title: "Blue Berry",
     background: "hsla(87.96116504854368, 50.24%, 59.80%, 1.00)",
   },
-  // {
-  //   backgroundImage: "",
-  //   image: "",
-  //   price: "",
-  //   title: "",
-  // },
+  {
+    backgroundImage: "",
+    image: "",
+    price: "",
+    title: "",
+  },
   // {
   //   backgroundImage: "",
   //   image: "",

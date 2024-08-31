@@ -31,10 +31,8 @@ export default function index() {
   return (
     <>
       <div
-        style={{
-          backdropFilter: "blur(14px)",
-        }}
-        className="pt-12 pb-4 sticky z-40  bg-[rgba(255,255,255,.5)] top-0 left-0 "
+    
+        className="pt-12 pb-4 sticky z-40  bg-white top-0 left-0 "
       >
         <div className="w-[95%] flex items-center gap-2 justify-between max-w-custom mx-auto">
           <Link to={"/"} className=" flex items-center gap-1 justify-start">
