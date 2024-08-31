@@ -8,6 +8,8 @@ import DashboardLayout from "./screens/DashboardLayout";
 import { ProtectRoute } from "./lib/ProtectRoute";
 import Animation from "./animations/Animation";
 const HomeWrapper = lazy(() => import("./screens/Home"));
+const Products = lazy(() => import("./screens/Products"));
+// Products
 // const SearchWrapper = lazy(() => import("./screens/Search"));
 // const SingleWrapper = lazy(() => import("./screens/Single"));
 // const SavedWrapper = lazy(() => import("./screens/Saved"));
@@ -27,6 +29,14 @@ export default function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <HomeWrapper />
+              </Suspense>
+            }
+          />
+          <Route
+            path="products"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Products />
               </Suspense>
             }
           />

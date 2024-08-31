@@ -82,6 +82,12 @@
   }
 }
 
+.lazy-load-image-background.blur.lazy-load-image-loaded img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
 
 .family3 {
   font-family: 'Merriweather', sans-serif;
