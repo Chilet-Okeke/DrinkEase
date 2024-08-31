@@ -1,7 +1,8 @@
 import React from "react";
 import { styled } from "styled-components";
 import Image from "../common/Image";
-
+import { IoMdStar } from "react-icons/io";
+import { IoIosStarHalf } from "react-icons/io";
 const recommendData = [
   {
     image:
@@ -51,7 +52,7 @@ const ProductRecommendation = () => {
       style={{ gap: ".2rem" }}
       className="flex max-w-custom w-[90%] md:w-[80%] py-12 flex-col mx-auto justify-center item-center"
     >
-      <div className="w-full bg-white px-32 py-32 max-w-custom mx-auto gap-32 flex flex-col">
+      <div className="w-full bg-white px-8 md:px-32 py-32 max-w-custom mx-auto gap-32 flex flex-col">
         <h2 className="uppercase md:text-9xl text-6xl underline font-black text-start w-full mx-auto family2">
           GIFT BETTER
         </h2>
@@ -67,7 +68,7 @@ const ProductRecommendation = () => {
               Oldest
             </div>
           </div>
-          <div className="w-full py-2 grid justify-center item-center mx-auto gap-4 md:grid-cols-2">
+          <div className="w-full py-2 grid mx-auto gap-4 md:grid-cols-2">
             {recommendData.map((x, index) => {
               return (
                 <ProductCard
@@ -91,7 +92,7 @@ const ProductRecommendation = () => {
                         ${x.price} USD
                       </h5>
                     </div>
-                    <div className="w-[200px] mx-auto">
+                    <div className=" md:w-[200px] min-h-[200px] mx-auto">
                       <div
                         style={{ transition: "all .6s" }}
                         className="w-full group-hover:translate-y-0 translate-y-24"
@@ -107,12 +108,12 @@ const ProductRecommendation = () => {
         </div>
       </div>
       <div className="w-full bg-white  mx-auto py-24 gap-4 flex flex-col">
-        <div className="w-[75%] py-2 mx-auto grid grid-cols-2 ">
+        <div className="w-[95%] md:w-[75%] py-2 mx-auto grid md:grid-cols-2 ">
           <div
             style={{ background: "#F5F5F5", padding: "5rem 0" }}
             className="flex item-center justify-center flex-col gap-4"
           >
-            <div className="w-85 left mx-auto flex justify-center flex-col gap-4">
+            <div className="w-[95%] left px-4 mx-auto flex justify-center flex-col gap-4">
               <span className="block family1 font-bold text-xs ">
                 IN THE GIVING MOOD?
               </span>
@@ -156,15 +157,21 @@ const ProductRecommendation = () => {
         </div>
         <div
           style={{ zIndex: "40" }}
-          className="w-85 py-2 grid mx-auto wrapper_1"
+          className="w-[90%] md:w-[70%] py-40 grid mx-auto md:grid-cols-2"
         >
           <div className="flex item-center justify-center flex-col gap-4"></div>
           <div className="flex">
             <div
               style={{ background: "#F5F5F5", padding: "8rem 0" }}
-              className="flex item-center justify-center flex-col gap-1 gap-1"
+              className="flex item-center justify-center flex-col gap-4"
             >
-              <div className="w-85 left mx-auto flex item-center justify-center flex-col gap-1">
+              <div className="w-[85%] left mx-auto flex item-center justify-center flex-col gap-4">
+                <div className="flex text-base items-center ">
+                  <IoMdStar/>
+                  <IoMdStar/>
+                  <IoMdStar/>
+                  <IoMdStar/>
+                </div>
                 <h3
                   style={{
                     fontWeight: "300",
@@ -236,7 +243,7 @@ const ProductCard = styled.div`
 const ProductrecommendationStyles = styled.div`
   position: relative;
   .left {
-    width: 50%;
+    width: 60%;
     @media (max-width: 780px) {
       width: 90%;
     }
