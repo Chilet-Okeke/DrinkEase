@@ -34,7 +34,7 @@ export default function index() {
       <div className="pt-12 pb-4 sticky bg-transparent z-40 top-0 left-0 w-full">
         <div className="w-[100%] flex items-center gap-2 justify-between max-w-custom mx-auto">
           <NavLink to={"/"} className=" flex items-center gap-1 justify-start">
-            <h4 className="flex flex-col text-xl md:text-3xl family2 font-bold text-dark">
+            <h4 className="flex flex-col text-3xl md:text-4xl family2 font-bold text-dark">
               Productos
             </h4>
           </NavLink>
