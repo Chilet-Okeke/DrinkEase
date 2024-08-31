@@ -1,65 +1,114 @@
-"use client"
-import { useDispatch, useSelector } from "react-redux";
-const Hero = () => {
-    const { room } = useSelector((store) => store.room);
+import React from 'react';
+import { styled } from 'styled-components';
+
+const ProductHero = () => {
   return (
-    <div
-      className="w-full min-h-[50vh] py-32 relative flex items-center justify-center
-   gap-8"
-    >
-      <div className="w-full h-full z-30 bg-[rgba(0,0,0,.6)] absolute top-0 left-0"></div>
-      <img
-        src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/revslider/parallax-9.jpg"
-        alt=""
-        className="absolute z-10 object-cover top-0 left-0 h-full w-full"
-      />
-      <div
-        className="w-[90%] mx-auto z-40 flex items-center justify-center flex-col
-       gap-4"
-      >
-        <div className="w-full absolute bottom-0 left-0 z-[35] flex  gap-8 items-center justify-center py-6">
-          <div className="flex items-center w-[90%]  max-w-custom_1 lg:flex-row flex-col gap-8 mx-auto justify-between">
-            <div className="flex  md:flex-row flex-col md:justify-start items-center gap-6 md:gap-8 h-full">
-              <span
-                style={{ letterSpacing: "4px" }}
-                className="text-[9px] md:text-xs font-normal uppercase flex items-center gap-4 font-booking_font"
-              >
-                <span className="text-white">Description</span>
-              </span>
-              <span
-                style={{ letterSpacing: "4px" }}
-                className="text-[9px] md:text-xs font-normal uppercase flex items-center gap-4 font-booking_font"
-              >
-                <span className="text-white">Around the Room</span>
-              </span>
-              <span
-                style={{ letterSpacing: "4px" }}
-                className="text-[9px] md:text-xs font-normal uppercase flex items-center gap-4 font-booking_font"
-              >
-                <span className="text-white">ROOM SERVICES</span>
-              </span>
-              <span
-                style={{ letterSpacing: "4px" }}
-                className="text-[9px] md:text-xs font-normal uppercase flex items-center gap-4 font-booking_font"
-              >
-                <span className="text-white">SIMILAR ROOMS</span>
-              </span>
-            </div>
-            <div className="flex flex-1 items-center justify-end">
-              <h3 className="text-5xl font-booking_font4 justify-end gap-2 flex text-white">
-                {room?.price}{" "}
-                <div className="flex font-booking_font_bold flex-col">
-                  <span className="text-sm uppercase">$</span>
-                  <span className="text-sm uppercase">/ per night</span>
-                </div>
-              </h3>
-            </div>
+    <ProductHeroStyles className="flex fixed top-0 h-screen w-screen justify-center items-center">
+      <div className="hero_wrapper flex h-100 w-100 justify-center item-center column">
+        <h1 className="w-85 auto family2 uppercase text text-center text-white">COCONUT</h1>
+        <div className="hero_info auto flex column gap-2">
+          <div className="image_wrappers flex auto column gap-2 justify-center item-center">
+            <img src="https://assets.website-files.com/5d85edd208e53eed3ae194a2/5e2c2fa3b0943f1845ba818e_coconut.png" className='Image_1' alt="" />
+
           </div>
+          <img src="https://assets.website-files.com/5d85edd208e53eed3ae194a2/5d88e2d6a39a48c1ef6f2e93_fruit-5.png" alt="" className="image image_2" />
+          <img src="https://assets.website-files.com/5d85edd208e53eed3ae194a2/5d88e2d911bed5c49169466e_fruit-6.png" alt="" className="image image_3" />
+          <h3 style={{ fontWeight: "300" }} className="fs-30 text-light text-center w-85 auto w-100">
+            Creamy, nutty, wild, warm-weather flavor from a far-away beach—real coconut blended with cool Greek Yogurt.
+          </h3>
         </div>
       </div>
-    </div>
-  );
-};
+    </ProductHeroStyles>
+  )
+}
+
+const ProductHeroStyles = styled.div`
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  background-color: inherit;
+  padding: 12rem 0;
+  .image {
+    position: absolute;
+    width:13rem;
+    height:13rem;
+    z-index: 1;
+    &.image_2 {
+        right: 10%;
+        bottom: 20%;
+        width:24rem;
+        height:24rem;
+        @media (max-width:780px) {
+          width:12rem;
+        height:12rem;
+        bottom:40%;
+        right:0%;
+        }
+    }
+    &.image_3 {
+        left: 25%;
+        top: 10%;
+        width:10rem;
+    height:10rem;
+    @media (max-width:780px) {
+      left: 10%;
+       width:7rem;
+    height:7rem;
+    }
+    }
+  }
+  h3 {
+    width: 75%;
+    @media (max-width:780px) {
+    width: 95%;
+    font-size: 24px;
+
+    }
+  }
+  .hero_wrapper {
+    position: relative;
+    position: fixed;
+  top: 0%;
+  left: 50%;
+  font-weight: 800;
+  transform:translate(-50%,-0%);
+  }
+  .hero_info {
+    z-index: 10;
+    width: 70%;
+    padding: 1rem 0;
+  }
+  .image_wrappers {
+    width: 40%;
+    @media (max-width:780px) {
+    width: 90%;
+
+    }
+    .Image_1 {
+    width: 65%;
+    object-fit:cover;
+  }
+  }
+ 
+
+  h1 {
+    width: 70%;
+    font-size: 8rem;
+    line-height: .9;
+    z-index: 3;
+  font-weight: 800;
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+  top: 10%;
+
+  @media (max-width:980px) {
+    font-size:5rem;
+    width:80%;
+  }
+
+  }
+`
 
 
-export default Hero
+export default ProductHero
