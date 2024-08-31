@@ -44,7 +44,7 @@ const ProductCard = ({ data, index, progress, targetScale, range }) => {
           <div className="w-full z-40 h-full absolute bg-[rgba(0,0,0,.2)]"></div>
         )}
         {data?.backgroundImage && (
-          <div className="w-full h-full z-[60] pt-20 justify-center relative flex">
+          <div className="w-full h-full z-[60] pt-20 justify-center items-center relative flex">
             <Link
               style={{ scale }}
               className="flex flex-col items-center  justify-center bg-[#fff] h-[400px] w-[400px] rounded-[50%] z-20 gap-4"

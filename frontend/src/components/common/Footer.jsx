@@ -17,7 +17,7 @@ const Footer = () => {
         style={{
           backgroundImage: "linear-gradient(319deg, #fff1eb, #ace0f9)",
         }}
-        className="w-full px-4 md:px-16 py-32 relative  grid sm:grid-cols-2 justify-center gap-8"
+        className="w-full px-4 md:px-16 py-32 relative  grid md:grid-cols-2 justify-center gap-8"
       >
         <div className="w-full flex flex-col gap-8 border-r border-[rgba(0,0,0,.2)]">
           <h4 className="text-3xl family2 font-black">

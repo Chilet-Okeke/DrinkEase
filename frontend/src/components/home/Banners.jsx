@@ -71,19 +71,19 @@ const journalList = [
 ];
 export default function Banners() {
   return (
-    <div className="w-full mt-20">
-      <div className="min-h-[400px] w-full mx-auto flex items-center justify-center relative">
+    <div className="w-full md:mt-40">
+      <div className="min-h-[400px] py-20 w-full mx-auto flex items-center justify-center relative">
         <img
           // src={data?.backgroundImage}
           src="https://assets.website-files.com/5d820ccf1097dd2dccadc680/5e2866783a68325c8d897d6d_dose-juice-mP0xREKwrqg-unsplash.jpg"
           alt=""
           className="absolute z-10 object-cover w-full h-full"
         />
-        <div className="w-full z-20 h-full flex flex-col gap-12 items-center justify-center">
+        <div className="w-full px-8 z-20 h-full flex flex-col gap-12 items-center justify-center">
           <h2 className="text-5xl font-black family2">
             Say hello to good-for-you ingredients
           </h2>
-          <div className="w-full flex items-center justify-center gap-8">
+          <div className="w-full md:w-[76%] mx-auto grid grid-cols-2 md:grid-cols-5 items-center justify-center gap-8">
             {banner1List?.map((data, index) => {
               return (
                 <div className="flex flex-col gap-4">
@@ -102,7 +102,7 @@ export default function Banners() {
       </div>
 
       <div className="min-h-[400px] py-20 bg-white w-full mx-auto flex items-center justify-center relative">
-        <div className="w-full z-20 h-full flex flex-col gap-8 items-center justify-center">
+        <div className="w-full px-8 z-20 h-full flex flex-col gap-8 items-center justify-center">
           <h2 className="text-5xl font-black family2">For all well beings</h2>
           <span className="text-2xl max-w-[600px] mx-auto text-center">
             We are kind to people + planet with clean, cruelty-free products +
@@ -125,7 +125,7 @@ export default function Banners() {
         }}
         className="min-h-[400px] py-20 w-full mx-auto flex items-center justify-center relative"
       >
-        <div className="w-full px-4 z-20 h-full flex flex-col gap-8 items-center justify-center">
+        <div className="w-full px-8 z-20 h-full flex flex-col gap-8 items-center justify-center">
           <div className="w-[80%] md:w-[75%] mx-auto max-w-custom grid md:grid-cols-3 items-center justify-center gap-2">
             {bannerlist2?.map((data, index) => {
               return (
@@ -155,7 +155,7 @@ export default function Banners() {
         </div>
       </div>
       <div className="min-h-[400px] py-20 bg-white w-full mx-auto flex items-center justify-center relative">
-        <div className="w-full px-4 md:w-[75%] max-w-custom mx-auto z-20 h-full flex flex-col gap-24 items-start justify-center">
+        <div className="w-full px-8 md:w-[75%] max-w-custom mx-auto z-20 h-full flex flex-col gap-24 items-start justify-center">
           <h2 className="text-5xl md:text-8xl uppercase font-black family2">
             Journal
           </h2>
