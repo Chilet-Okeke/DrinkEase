@@ -4,15 +4,7 @@ import "./index.css";
 import Loader from "./components/home/loader";
 import Layout from "./screens/Layout";
 import DashboardLayout from "./screens/DashboardLayout";
-// import {
-//   Statistics,
-//   Rooms,
-//   Customers,
-//   CreateRoom,
-//   Reservation,
-//   Orders,
-//   Settings,
-// } from "./screens/dashboard";
+
 import { ProtectRoute } from "./lib/ProtectRoute";
 import Animation from "./animations/Animation";
 const HomeWrapper = lazy(() => import("./screens/Home"));
@@ -27,20 +19,20 @@ export default function App() {
   const [height, setHeight] = useState(0);
 
   return (
-    // <div className="based" style={{ height }}>
-    //   <Routes>
-    //     <Route path={"/"} element={<Layout />}>
-    //       <Route
-    //         index
-    //         element={
-    //           <Suspense fallback={<Loader />}>
-    //             <HomeWrapper />
-    //           </Suspense>
-    //         }
-    //       />
-    //     </Route>
-    //   </Routes>
-    // </div>
-    <Animation/>
+    <div className="based" style={{ height }}>
+      <Routes>
+        <Route path={"/"} element={<Layout />}>
+          <Route
+            index
+            element={
+              <Suspense fallback={<Loader />}>
+                <HomeWrapper />
+              </Suspense>
+            }
+          />
+        </Route>
+      </Routes>
+    </div>
+    // <Animation/>
   );
 }
