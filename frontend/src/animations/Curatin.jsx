@@ -53,7 +53,7 @@ const Curtain = ({ children, bgColor, type }) => {
         <span className="z-20"> {children}</span>
         <div
           ref={circleRef}
-          style={{ background: `${bgColor ? bgColor : "#3856E0"}` }}
+          style={{ background: `${bgColor ? bgColor : "var(--primary)"}` }}
           className="absolute z-10 rounded-[50%] top-[100%] w-full h-[150%] "
         ></div>
       </div>
@@ -69,7 +69,7 @@ const Curtain = ({ children, bgColor, type }) => {
         <span className="z-20"> {children}</span>
         <div
           ref={circleRef}
-          style={{ background: `${bgColor ? bgColor : "#3856E0"}` }}
+          style={{ background: `${bgColor ? bgColor : "var(--primary)"}` }}
           className="absolute z-10 rounded-[50%] top-[100%] w-full h-[150%] "
         ></div>
       </div>

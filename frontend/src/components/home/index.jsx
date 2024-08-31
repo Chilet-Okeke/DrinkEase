@@ -8,7 +8,7 @@ const HomeIndex = () => {
   return (
     <div className="bg-[var(--light-grey)] w-full flex flex-col">
       <Navbar />
-      <div className="w-full flex flex-col relative gap-4">
+      <div className="w-full flex flex-col relative">
         <Hero />
         <ProductList/>
       </div>

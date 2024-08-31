@@ -10,6 +10,7 @@ const SmoothScroll = ({ children }) => {
       smooth: true,
       smoothTouch: true,
       touchMultiplier: 2,
+      
     });
     function raf(time) {
       lenis.raf(time);

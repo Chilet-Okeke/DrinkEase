@@ -33,7 +33,7 @@ const Navbar = () => {
   const { currentUser } = useSelector((store) => store.auth);
   return (
     <>
-      <div className="p-3 z-[50] bg-[var(--grey-1)] px-4 md:px-8 min-h-[72px] sticky top-0 left-0 flex items-center justify-center">
+      <div className="p-3 z-[100] bg-[var(--grey-1)] px-4 md:px-8 min-h-[72px] sticky top-0 left-0 flex items-center justify-center">
         <div className="w-full flex items-center gap-2 justify-between">
           <Link to={"/"} className=" flex items-center gap-1 justify-start">
             <img
@@ -59,7 +59,7 @@ const Navbar = () => {
                 <Link
                   to={`/${list.path}`}
                   key={index}
-                  className={`text-sm hover:text-grey font-booking_font4 flex items-center gap-2 p-3 px-3 rounded-[40px]`}
+                  className={`text-sm hover:text-grey family2 flex items-center gap-2 p-3 px-3 rounded-[40px]`}
                 >
                   {/* <img src={list?.icon} className="w-4" alt="" /> */}
                   <AnimateText children={list?.title} />
