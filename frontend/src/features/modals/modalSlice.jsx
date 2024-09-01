@@ -1,10 +1,9 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
-import toast from "react-hot-toast";
 const initialState = {
-  savedRooms: [],
   loginmodal: false,
   registermodal: false,
+  cartmodal: false,
 };
 
 export const modalSlice = createSlice({
@@ -24,10 +23,22 @@ export const modalSlice = createSlice({
     offRegisterModal: (state, action) => {
       state.registermodal = false;
     },
+    offCartModal: (state, action) => {
+      state.cartmodal = false;
+    },
+    onCartModal: (state, action) => {
+      state.cartmodal = true;
+    },
   },
 });
 
-export const { onLoginModal, offLoginModal, onRegisterModal, offRegisterModal } =
-  modalSlice.actions;
+export const {
+  onLoginModal,
+  offLoginModal,
+  onRegisterModal,
+  offRegisterModal,
+  onCartModal,
+  offCartModal
+} = modalSlice.actions;
 
 export default modalSlice.reducer;

@@ -31,7 +31,7 @@ export default function BookingItem() {
       <Navbar />
       <div className="mt-40 w-full">
         <Hero />
-        <div className="w-[80%] mx-auto max-w-custom">
+        <div className="w-[95%] md:w-[80%] mx-auto max-w-custom">
           <ProductInformation />
           <ProductRecommendation/>
           <Footer/>

@@ -31,8 +31,6 @@ export const smallslideup2 = {
   },
 };
 
-
-
 export const clipPathRight = {
   initial: {
     opacity: 0,
@@ -46,7 +44,7 @@ export const clipPathRight = {
   }),
   exit: {
     opacity: 0,
-    transition: {duration: 0.5},
+    transition: { duration: 0.5 },
     // clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
     clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
   },
@@ -60,7 +58,7 @@ export const clipPathLeft2 = {
   animate: (i) => ({
     opacity: 1,
     clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-    transition: { duration: .7, delay: i * 0.4 },
+    transition: { duration: 0.7, delay: i * 0.4 },
   }),
   exit: {
     opacity: 0,
@@ -126,6 +124,26 @@ export const slide = {
   },
   exit: {
     y: 0,
+    transition: {
+      duration: 1,
+      ease: [0.76, 0, 0.24, 1],
+    },
+  },
+};
+
+export const slideLeft = {
+  initial: {
+    right: "100%",
+  },
+  enter: {
+    right: "0",
+    transition: {
+      duration: 1,
+      ease: [0.76, 0, 0.24, 1],
+    },
+  },
+  exit: {
+    right: "100%",
     transition: {
       duration: 1,
       ease: [0.76, 0, 0.24, 1],

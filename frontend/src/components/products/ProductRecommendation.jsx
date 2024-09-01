@@ -3,48 +3,7 @@ import { styled } from "styled-components";
 import Image from "../common/Image";
 import { IoMdStar } from "react-icons/io";
 import { IoIosStarHalf } from "react-icons/io";
-const recommendData = [
-  {
-    image:
-      "https://assets.website-files.com/5d85edd208e53eed3ae194a2/5e2c2f718c2b172653b7bf1b_strwaberry-p-500.png",
-    text: "Strawberry",
-    price: 2.99,
-    backgroundcolor: "#FFEBEE",
-    color: "#FF7043",
-  },
-  {
-    image:
-      "https://assets.website-files.com/5d85edd208e53eed3ae194a2/5e2c2f7fd2e06746e4a50f05_blueberry-p-500.png",
-    text: "BlueBerry",
-    price: 40.1,
-    backgroundcolor: "#E3F2FD",
-    color: "#47A5F5",
-  },
-  {
-    image:
-      "https://assets.website-files.com/5d85edd208e53eed3ae194a2/5e2c2e658c2b172ab3b7acbd_peach-p-500.png",
-    text: "Peach",
-    price: 3.98,
-    backgroundcolor: "#FBE9E7",
-    color: "#FF7043",
-  },
-  {
-    image:
-      "https://assets.website-files.com/5d85edd208e53eed3ae194a2/5e2c2f94d2e067c112a50fab_lime-p-500.png",
-    text: "KeySlime",
-    price: 4.1,
-    backgroundcolor: "#F1F8E9",
-    color: "#9CCC65",
-  },
-  {
-    image:
-      "https://assets.website-files.com/5d85edd208e53eed3ae194a2/5e2c2fa3b0943f1845ba818e_coconut-p-500.png",
-    text: "Coconut",
-    price: 4.1,
-    backgroundcolor: "#EFEBE9",
-    color: "#8D6E63",
-  },
-];
+import { productData } from "../../data/product";
 
 const ProductRecommendation = () => {
   return (
@@ -69,7 +28,7 @@ const ProductRecommendation = () => {
             </div>
           </div>
           <div className="w-full py-2 grid mx-auto gap-4 md:grid-cols-2">
-            {recommendData.map((x, index) => {
+            {productData.map((x, index) => {
               return (
                 <ProductCard
                   backgroundColor={x.backgroundcolor}

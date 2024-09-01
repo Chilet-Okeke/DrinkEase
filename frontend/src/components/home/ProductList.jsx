@@ -54,7 +54,7 @@ const ProductList = () => {
           </div>
         </div> */}
         <div ref={containerRef} className="w-full">
-          {productData?.map((data, index) => {
+          {productData?.slice(0, 3)?.map((data, index) => {
             const targetScale = 1 - (productData.length - 1) * 0.009;
             return (
               <ProductCard
