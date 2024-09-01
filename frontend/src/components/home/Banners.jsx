@@ -1,5 +1,7 @@
 import React from "react";
 import Curtain from "../../animations/Curatin";
+import { journalList } from "../../data/journal";
+import Image from "../common/Image";
 const banner1List = [
   {
     image:
@@ -57,23 +59,12 @@ const bannerlist2 = [
       "Each time you send in your empty bottles, you'll receive 15% off your next shipment.",
   },
 ];
-const journalList = [
-  {
-    image: "https://cdn.prod.website-files.com/5d85edd208e53eed3ae194a2/5dea6e80519095f60f2b49ba_gemma-chua-tran-q747wDQi5Gk-unsplash.jpg",
-    title: "Jennifer Simpsons",
-    subtext: "Jennifer Simpsons is a passionate purpose-driven entrepreneur known for creating innovative products to shift consciousness around taboo topics and women’s health. She is the co-founder of THINX period-proof underwear, the co-founder of WILD, the first gluten-free pizza restaurant, and the founder and Chief Creative Officer of TUSHY, a modern bidet brand focused on improving the American bathroom experience. ",
-  },
-  {
-    image: "https://cdn.prod.website-files.com/5d85edd208e53eed3ae194a2/5dea6bb3db032a32d3f5cc5e_gemma-chua-tran-xh2wGLVYLzo-unsplash.jpg",
-    title: "Mental Hygiene and Meditation",
-    subtext: "Emily Fletcher is the founder of Ziva Meditation and the author of the new bestselling book, “Stress Less Accomplish More, Meditation for Extraordinary Performance.” At Ziva, Emily teaches “meditation to get good at life, not to get good at meditation.",
-  },
-];
+
 export default function Banners() {
   return (
     <div className="w-full md:mt-48">
       <div className="min-h-[400px] py-20 w-full mx-auto flex items-center justify-center relative">
-        <img
+        <Image
           // src={data?.backgroundImage}
           src="https://assets.website-files.com/5d820ccf1097dd2dccadc680/5e2866783a68325c8d897d6d_dose-juice-mP0xREKwrqg-unsplash.jpg"
           alt=""
@@ -88,7 +79,7 @@ export default function Banners() {
               return (
                 <div className="flex flex-col gap-4">
                   <div className="w-24 h-24 flex items-center justify-center bg-white rounded-[50%]">
-                    <img
+                    <Image
                       src={data?.image}
                       alt=""
                       className="w-20 h-20 object-cover"
@@ -131,7 +122,7 @@ export default function Banners() {
               return (
                 <div className="flex items-center justify-center p-8 bg-[#fff1eb38] flex-col gap-4">
                   <div className=" rounded-[50%]">
-                    <img
+                    <Image
                       src={data?.image}
                       alt=""
                       className="w-20 h-20 object-cover"
@@ -160,20 +151,20 @@ export default function Banners() {
             Journal
           </h2>
           <div className="w-full flex flex-col gap-2">
-            {journalList?.map((data, index) => {
+            {journalList?.slice(0, 2).map((data, index) => {
               return (
                 <div className="grid md:grid-cols-custom cursor-pointer group justify-center">
-                <div className="w-full relative min-h-[500px] rounded-tl-[40px] rounded-bl-[40px] overflow-hidden">
-                    <img
+                  <div className="w-full relative min-h-[500px] rounded-tl-[40px] rounded-bl-[40px] overflow-hidden">
+                    <Image
                       src={data?.image}
                       alt=""
                       style={{
-                        transition:"all .5s"
+                        transition: "all .5s",
                       }}
                       className="w-full group-hover:scale-[1.2] absolute h-full object-cover"
                     />
                   </div>
-                <div className="md:w-[300px] p-8 rounded-tr-[40px] rounded-br-[40px] bg-[#fafafa] flex items-start justify-center flex-col gap-4">
+                  <div className="md:w-[300px] p-8 rounded-tr-[40px] rounded-br-[40px] bg-[#fafafa] flex items-start justify-center flex-col gap-4">
                     <h5 className="text-base uppercase family1 text-[#257194]">
                       Step {index + 1}
                     </h5>
