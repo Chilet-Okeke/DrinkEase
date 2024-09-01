@@ -12,7 +12,7 @@ const Products = lazy(() => import("./screens/Products"));
 // Products
 // const SearchWrapper = lazy(() => import("./screens/Search"));
 const SingleWrapper = lazy(() => import("./screens/Single"));
-// const SavedWrapper = lazy(() => import("./screens/Saved"));
+const Journal = lazy(() => import("./screens/Journal"));
 // const TripsWrapper = lazy(() => import("./screens/Trips"));
 // const PaymentWrapper = lazy(() => import("./screens/Payment"));
 // const PaymentSuccess = lazy(() => import("./screens/Payment-Success"));
@@ -40,11 +40,19 @@ export default function App() {
               </Suspense>
             }
           />
-           <Route
+          <Route
             path="product/:id"
             element={
               <Suspense fallback={<Loader />}>
                 <SingleWrapper />
+              </Suspense>
+            }
+          />
+          <Route
+            path="journal"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Journal />
               </Suspense>
             }
           />

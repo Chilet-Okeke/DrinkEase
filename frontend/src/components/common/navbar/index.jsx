@@ -24,8 +24,8 @@ const linkData = [
     path: "contact",
   },
   {
-    title: "News",
-    path: "news",
+    title: "Journal",
+    path: "journal",
   },
 ];
 
