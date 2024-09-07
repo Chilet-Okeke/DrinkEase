@@ -20,7 +20,7 @@
       "dest": "index.js"
     },
     {
-      "src": "/api/v1/room/(.*)",
+      "src": "/api/v1/product/(.*)",
       "dest": "index.js"
     },
 
@@ -29,7 +29,7 @@
       "dest": "index.js"
     },
     {
-      "src": "/api/v1/reservation/(.*)",
+      "src": "/api/v1/notification/(.*)",
       "dest": "index.js"
     },
     {
@@ -41,7 +41,7 @@
       "dest": "index.js"
     },
     {
-      "src": "/api/v1/favourites/(.*)",
+      "src": "/api/v1/review/(.*)",
       "dest": "index.js"
     },
     {

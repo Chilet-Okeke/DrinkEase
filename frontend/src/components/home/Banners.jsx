@@ -62,19 +62,21 @@ const bannerlist2 = [
 
 export default function Banners() {
   return (
-    <div className="w-full md:mt-48">
+    <div className="w-full  md:mt-40">
       <div className="min-h-[400px] py-20 w-full mx-auto flex items-center justify-center relative">
-        <Image
-          // src={data?.backgroundImage}
-          src="https://assets.website-files.com/5d820ccf1097dd2dccadc680/5e2866783a68325c8d897d6d_dose-juice-mP0xREKwrqg-unsplash.jpg"
-          alt=""
-          className="absolute z-10 object-cover w-full h-full"
-        />
+        <div className="w-full h-full absolute">
+          <Image
+            // src={data?.backgroundImage}
+            src="https://assets.website-files.com/5d820ccf1097dd2dccadc680/5e2866783a68325c8d897d6d_dose-juice-mP0xREKwrqg-unsplash.jpg"
+            alt=""
+            className=""
+          />
+        </div>
         <div className="w-full px-8 z-20 h-full flex flex-col gap-12 items-center justify-center">
           <h2 className="text-5xl font-black family2">
             Say hello to good-for-you ingredients
           </h2>
-          <div className="w-full md:w-[76%] mx-auto grid grid-cols-2 md:grid-cols-5 items-center justify-center gap-8">
+          <div className="w-full md:w-[70%] mx-auto grid grid-cols-2 md:grid-cols-5 items-center justify-center gap-8">
             {banner1List?.map((data, index) => {
               return (
                 <div className="flex flex-col gap-4">
@@ -122,17 +124,19 @@ export default function Banners() {
               return (
                 <div className="flex items-center justify-center p-8 bg-[#fff1eb38] flex-col gap-4">
                   <div className=" rounded-[50%]">
-                    <Image
-                      src={data?.image}
-                      alt=""
-                      className="w-20 h-20 object-cover"
-                    />
+                    <div className="w-20">
+                      <Image
+                        src={data?.image}
+                        alt=""
+                        className=" object-cover"
+                      />
+                    </div>
                   </div>
                   <div className="w-full flex items-center justify-center flex-col gap-4">
                     <h5 className="text-base uppercase family1 text-[#257194]">
                       Step {index + 1}
                     </h5>
-                    <h4 className="text-2xl md:text-3xl font-black family2">
+                    <h4 className="text-2xl md:text-3xl text-center font-black family2">
                       {data?.title}
                     </h4>
                     <h4 className="text-xs md:text-sm text-center leading-[1.8] family3">

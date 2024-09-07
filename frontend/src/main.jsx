@@ -7,7 +7,7 @@ import { Toaster } from "react-hot-toast";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import SmoothScroll from "./constants/utils/SmoothScroll";
+import SmoothScroll from "./utils/SmoothScroll";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

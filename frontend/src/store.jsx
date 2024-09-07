@@ -1,17 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import roomSlice from "./features/room/roomSlice";
-import modalSlice from "./features/modals/modalSlice";
-import authSlice from "./features/auth/authSlice";
-import paymentSlice from "./features/payment/paymentSlice";
-import statSlice from "./features/stat/statSlice";
-import cartSlice from "./features/cart/cartSlice";
+import { apiSlice } from "./slices/apiSlice";
+import authReducer from "./slices/authSlice"; // Use default export
+import cartReducer from "./slices/cartSlice";
+import modalReducer from "./slices/modalSlice";
+
 export const store = configureStore({
   reducer: {
-    room: roomSlice,
-    modal: modalSlice,
-    auth: authSlice,
-    payment: paymentSlice,
-    stat: statSlice,
-    cart: cartSlice,
+    [apiSlice.reducerPath]: apiSlice.reducer,
+    auth: authReducer, // Corrected here
+    cart: cartReducer,
+    modal: modalReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
+  devTools: true,
 });

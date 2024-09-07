@@ -15,20 +15,20 @@ const ProductCard = ({ data, index, progress, targetScale, range }) => {
   const scale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const cardScale = useTransform(progress, range, [1, targetScale]);
   return (
-    <div className="w-full h-screen sticky top-0 left-0 flex items-center justify-center">
+    <div className="w-full h-[100vh] sticky mb-20 md:mb-24 top-0 left-0 flex">
       <motion.div
         ref={containerRef}
         style={{
           // scale: cardScale,
-          color: `${data?.color}`,
+          // color: `${data?.color}`,
           top: `calc(15vh + ${index * 100}px) `,
         }}
-        className="flex flex-col object-cover h-[700px] border-2 overflow-hidden border-[rgb(255,255,255)] lg:h-[700px] gap-4 relative rounded-t-[40px] w-full"
+        className="flex flex-col object-cover h-[700px] overflow-hidden lg:h-[700px] gap-4 relative rounded-t-[40px] w-full"
       >
-        {data?.backgroundImage ? (
+        {data?.images[4] ? (
           <div className="absolute w-full h-full">
             <Image
-              src={data?.backgroundImage}
+              src={data?.images[3]}
               alt=""
               className="absolute z-10 object-cover w-full h-full"
             />
@@ -46,16 +46,21 @@ const ProductCard = ({ data, index, progress, targetScale, range }) => {
           <Link
             style={{ scale }}
             className="flex flex-col items-center justify-center bg-[#fff] h-[400px] w-[400px] rounded-[50%] z-20 gap-4"
-            to={`/product/${data?.title}`}
+            to={`/product/${data?.id}`}
           >
             <div className="flex flex-col justify-center items-center gap-1">
               <h4 className="text-3xl font-bold">{data?.title}</h4>
               <span className="text-sm text-grey capitalize family1">
-                <span className="line-through"> $ 3.99 USD</span>$ 2.99 USD
+                <span className="line-through"> ${data?.price * 2}USD</span> $
+                {data?.price} USD
               </span>
             </div>
             <div className="w-32">
-              <Image src={data?.image} className="w-full object-cover" alt="" />
+              <Image
+                src={data?.images[0]}
+                className="w-full object-cover"
+                alt=""
+              />
             </div>
             <button
               style={{

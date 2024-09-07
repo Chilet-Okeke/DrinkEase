@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../common/navbar/index";
 import ProductRecommendation from "./ProductRecommendation";
 import Footer from "../common/Footer";
-export default function Productindex() {
+export default function Productindex({ products }) {
   return (
     <div
       style={{
@@ -11,9 +11,9 @@ export default function Productindex() {
       className="w-full"
     >
       <Navbar />
-      <div className="pt-20">
-        <div className="w-[90%] mx-auto max-w-custom flex flex-col relative">
-          <ProductRecommendation />
+      <div className="pt-20 md:pt-40">
+        <div className="w-[90%] md:w-[70%] mx-auto max-w-custom flex flex-col relative">
+          <ProductRecommendation products={products} />
           <Footer />
         </div>
       </div>

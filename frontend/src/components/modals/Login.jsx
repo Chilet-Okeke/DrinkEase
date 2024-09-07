@@ -1,51 +1,34 @@
-"use client";
 import React, { useEffect, useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { RxCross2 } from "react-icons/rx";
 import toast from "react-hot-toast";
 import Loader from "../home/loader";
-import { LoginFormInputData } from "@/constants/data/formdata";
 import {
-  offLoginModal,
+  onLoginModal,
   offRegisterModal,
-  onRegisterModal,
-} from "../../features/modals/modalSlice";
+  offLoginModal,
+} from "../../slices/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { LoginUser } from "@/features/auth/authReducer";
 
-const ModalVariants = {
-  initial: {
-    opacity: 0,
-    y: "100vh",
-  },
-  enter: {
-    opacity: 1,
-    y: "0",
-    transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
-  },
-  exit: {
-    opacity: 1,
-    y: "100vh",
+import Image from "../common/Image";
+import { ModalVariants } from "@/utils/framer";
+import { useLoginMutation } from "@/slices/userApiSlice";
+import { setUserCredentials } from "@/slices/authSlice";
+import { LoginFormInputData } from "@/data/formdata";
 
-    transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
-  },
-};
 const LoginModal = () => {
   const dispatch = useDispatch();
-
-  const { loginisSuccess, loginisLoading } = useSelector((store) => store.auth);
   const { loginmodal } = useSelector((store) => store.modal);
   const handleClearAlert = () => {
     dispatch(offLoginModal());
   };
   const [formvalue, setFormValue] = useState({
-    email: "",
-    hashedPassword: "",
+    email: "edidiong1000@gmail.com",
+    password: "12345",
   });
+  const noEntry = formvalue.email === "" || formvalue.password === "";
+  const [login, { isLoading, isSuccess }] = useLoginMutation();
 
   const handleFormChange = (e) => {
     setFormValue({
@@ -58,16 +41,23 @@ const LoginModal = () => {
     dispatch(offLoginModal());
     dispatch(onRegisterModal());
   };
-  const handleFormSubmision = (e) => {
+  const handleFormSubmision = async (e) => {
     e.preventDefault();
-    dispatch(LoginUser(formvalue));
+    try {
+      const { data } = await login(formvalue).unwrap();
+      dispatch(setUserCredentials({ data }));
+      toast.success("Login success");
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
   useEffect(() => {
-    if (loginisSuccess) {
+    if (isSuccess) {
       dispatch(offLoginModal());
     }
-  }, [loginisSuccess]);
+  }, [isSuccess]);
+
   return (
     <LoginModalStyles
       as={motion.div}
@@ -75,66 +65,87 @@ const LoginModal = () => {
       exit={{ opacity: 0, visibility: "hidden" }}
       animate={{ opacity: 1, visibility: "visible" }}
     >
-      {loginisLoading && <Loader />}
+      {isLoading && <Loader />}
       <motion.div
         variants={ModalVariants}
         initial="initial"
         animate={loginmodal ? "enter" : "exit"}
         exit="exit"
-        className="guestModalCard"
+        data-test="loginmodal"
+        className="LoginModalCard grid md:grid-cols-2"
       >
+        <div className="w-full h-full relative md:block hidden">
+          <div className="bg-[rgba(0,0,0,.5)] z-20 absolute w-full h-full"></div>
+          <Image
+            alt=""
+            loading="lazy"
+            src={
+              "	https://avada.website/restaurant/wp-content/uploads/sites/112/2020/04/slider72x-scaled.jpg"
+            }
+            className=""
+          />
+        </div>
         <div className="w-full mx-auto overflow-hidden flex flex-col">
-          <div className="w-full sticky top-0 left-0 p-6 px-8 border-b flex border-[rgba(0,0,0,.2)] items-center justify-between">
-            <h3 className="text-3xl font-bold font-booking_font4">
-              Sign In
-              <span className="block text-sm font-normal font-booking_font_normal">
-                Login to your account and check out your bookings
-              </span>
-            </h3>
-            <div className="cross" onClick={handleClearAlert}>
-              <RxCross2 />
+          <div
+            className="cross absolute z-[30000000000] top-3 right-3"
+            onClick={handleClearAlert}
+          >
+            <RxCross2 />
+          </div>
+          <div className="w-full sticky top-0 left-0 p-6 px-8 border-b flex items-start flex-col justify-between">
+            <div className="flex flex-col">
+              <h3 className="text-2xl md:text-3xl font-bold family1">
+               Sign Up
+              </h3>
             </div>
           </div>
           <div className="w-full overflow-auto h-[350px]  flex">
             <form
               onSubmit={handleFormSubmision}
-              className="w-[90%] mx-auto p-4 px-8 pb-8 flex flex-col gap-6"
+              className="w-[100%] mx-auto p-4 md:px-8 pb-8 flex flex-col gap-6"
             >
-              <div className="w-full flex flex-col gap-3">
+              <div className="w-full flex flex-col gap-2">
                 {LoginFormInputData?.map((input, index) => {
                   return (
                     <label
                       key={index}
                       htmlFor={input.label}
-                      className="text-sm font-booking_font_normal rounded-[10px] flex flex-col gap-2 text-dark"
+                      className="text-sm family1 rounded-[10px] flex flex-col gap-2 text-dark"
                     >
                       <span className="text-dark font-semibold">
                         {input.label}
                       </span>
-                      <div className="input flex item-center gap-1">
-                        {/* <MdOutlineMailOutline fontSize={'18px'} className="text-grey" /> */}
-                        <input
-                          className="w-100 rounded-2xl text-dark
-                           font-semibold text-base"
-                          required={true}
-                          name={input?.name}
-                          id={input.label}
-                          value={formvalue[input.name]}
-                          type={input.type}
-                          placeholder={input.label}
-                          onChange={handleFormChange}
-                        ></input>
-                      </div>
+                      <input
+                        className="w-full input rounded-md text-dark
+                           font-normal text-sm"
+                        required={true}
+                        name={input?.name}
+                        id={input.label}
+                        value={formvalue[input.name]}
+                        type={input.type}
+                        placeholder={input.label}
+                        onChange={handleFormChange}
+                      ></input>
                     </label>
                   );
                 })}
               </div>
               <div className="w-full flex items-center justify-center flex-col gap-3">
                 <button
+                  data-test="loginmodal_button"
                   type="submit"
-                  className="p-4 px-8 text-center w-full cursor-pointer btn bg-[#000] rounded-[10px] font-booking_font_normal font-normal text-white"
+                  disabled={isLoading || noEntry}
+                  className="p-4 px-8 hover:opacity-[.5] text-[#fff] flex items-center justify-center w-full cursor-pointer 
+                   bg-[#000] rounded-[40px] family1 font-bold"
                 >
-                  Sign In
+                  {isLoading ? (
+                    <div className="w-full flex items-center justify-center gap-3">
+                      In Progress
+                      <Loader type={"dots"} />
+                    </div>
+                  ) : (
+                    "Sign In"
+                  )}
                 </button>
                 <div className="w-full flex items-center justify-start gap-2">
                   <span className="text-sm font-normal text-dark">
@@ -142,7 +153,7 @@ const LoginModal = () => {
                     <span
                       onClick={handleLoginModal}
                       style={{ textDecoration: "underline" }}
-                      className="font-normal font-booking_font_bold cursor-pointer"
+                      className="font-bold family1 cursor-pointer"
                       // href={"#"}
                     >
                       Sign Up
@@ -151,17 +162,18 @@ const LoginModal = () => {
                 </div>
               </div>
 
-              <div className="option text-dark">or</div>
+              {/* <div className="option text-dark">Or </div>
 
               <div
                 // onClick={() => signIn("google")}
-                className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#fff] rounded-[10px] font-booking_font_normal font-normal border border-[rgba(0,0,0,.9)]"
+                className="p-4 px-8 items-center flex justify-center gap-4
+                 w-full cursor-pointer btn rounded-[40px] family1 font-bold"
               >
-                <FcGoogle fontSize={"28px"} />
-                Continue with Google
-              </div>
+                <FcGoogle fontSize={"24px"} />
+                <AnimateText children={"Continue with Google"} />
+              </div> */}
 
-              {/* <div className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#000] rounded-[10px] font-booking_font_normal font-normal border border-[rgba(0,0,0,.9)]">
+              {/* <div className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#000] rounded-[10px] font-booking_font font-normal border border-[rgba(0,0,0,.9)]">
                 <FaGithub fontSize={"28px"} />
                 Continue with Github
               </div> */}
@@ -172,13 +184,14 @@ const LoginModal = () => {
     </LoginModalStyles>
   );
 };
+
 const LoginModalStyles = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   position: fixed;
   left: 0;
   display: flex;
-  z-index: 4900;
+  z-index: 49000000;
   align-items: center;
   justify-content: center;
   top: 0;
@@ -210,32 +223,40 @@ const LoginModalStyles = styled(motion.div)`
       transform: translateY(-50%);
     }
   }
-  .guestModalCard {
-    max-width: 400px;
-    min-width: 540px;
+  .LoginModalCard {
+    max-width: 800px;
+    min-width: 700px;
     display: flex;
     height: 500px;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
     background: #fff;
-    gap: 2rem;
-    border-radius: 6px;
+    /* gap: 2rem; */
+    border-radius: 15px;
+    overflow: hidden;
     box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.4);
     position: relative;
+    @media (max-width: 980px) {
+      max-width: 400px;
+      min-width: 400px;
+    }
+    @media (max-width: 480px) {
+      max-width: 90%;
+      min-width: 90%;
+    }
     .cross {
-      width: 3rem;
-      height: 3rem;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+
       &:hover {
         background: #d9d8d8;
       }
       svg {
-        font-size: 20px;
+        font-size: 16px;
       }
     }
     .deleteCardBottom {
@@ -247,7 +268,7 @@ const LoginModalStyles = styled(motion.div)`
       button {
         padding: 1.2rem 2rem;
         border: none;
-        font-size: 1.3rem;
+        /* font-size: 1.4rem; */
         font-weight: 400;
         background: var(--grey-2);
         color: #fff;

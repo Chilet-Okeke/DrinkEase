@@ -1,26 +1,10 @@
-"use client";
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+// "use client";
 import Navbar from "../common/navbar/index";
 import ProductInformation from "./ProductInformation";
 import ProductRecommendation from './ProductRecommendation'
 import Hero from "./Hero";
 import Footer from "../common/Footer";
-export default function BookingItem() {
-  const { id } = useParams();
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (id) {
-  //     dispatch(getSingleRooms(id));
-  //     dispatch(getAllRooms());
-  //   }
-  // }, [id]);
-  // const { rooms, getsingleRoomisLoading } = useSelector((store) => store.room);
-  // if (getsingleRoomisLoading) {
-  //   return <Loader />;
-  // }
+export default function ProductItem({ data, Products }) {
   return (
     <div
       style={{
@@ -30,11 +14,11 @@ export default function BookingItem() {
     >
       <Navbar />
       <div className="mt-40 w-full">
-        <Hero />
-        <div className="w-[95%] md:w-[80%] mx-auto max-w-custom">
-          <ProductInformation />
-          <ProductRecommendation/>
-          <Footer/>
+        <Hero data={data} />
+        <div className="w-[95%] md:w-[70%] mx-auto max-w-custom">
+          <ProductInformation data={data} />
+          <ProductRecommendation data={data} Products={Products} />
+          <Footer />
         </div>
       </div>
     </div>

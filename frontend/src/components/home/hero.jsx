@@ -1,23 +1,163 @@
-import React from "react";
-import Button from "../common/Button";
-const Hero = () => {
+import React, { useState, useEffect } from "react";
+import Curtain from "../../animations/Curatin";
+import { styled } from "styled-components";
+import Image from "../common/Image";
+import { Link } from "react-router-dom";
+const Hero = ({ products }) => {
+  const [tab, setTab] = useState(1);
+
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      setTab(tab === 2 ? 0 : tab + 1);
+    }, 6000);
+    return () => clearTimeout(interval);
+  }, [setTab, tab]);
+  const direction = tab * 100;
+  // console.log(direction);
+  // console.log(products)
   return (
-    <div className="w-full min-h-[800px] flex items-center justify-center">
-      <div className="w-[80%] flex items-start flex-col h-full gap-8 justify-between max-w-custom mx-auto">
-        <h1 className="text-6xl md:text-8xl font-semibold">Building the future</h1>
-        <div className="flex">
-          <div className="h-32 w-[360px] md:w-[400px] text-2xl md:text-7xl">
-            <Button>Together</Button>
+    <div className="w-full overflow-hidden">
+      <div
+        style={{
+          gridTemplateColumns: "repeat(3, 100%)",
+        }}
+        className="min-h-[900px] items-center justify-center grid relative"
+      >
+        {products?.slice(0, 3).map((data, index) => {
+          return (
+            <ProductHeroStyles
+              key={index}
+              style={{
+                transform: `translateX(-${direction}%)`,
+                transition: "all 1.5s var(--transition)",
+              }}
+              className="flex w-[100%] pt-20 h-full relative justify-center items-center"
+            >
+              <div className="hero_wrapper max-w-custom mx-auto flex h-full py-4 w-full relative justify-center items-center gap-4 flex-col">
+                <h1 className="w-[100%] z-20 text-7xl md:text-9xl family2 uppercase font-black text text-center text-white">
+                  {data?.subtitle}
+                </h1>
+                <h3
+                  // style={{ fontWeight: "300" }}
+                  style={{ color: `${data?.color}` }}
+                  className="text-2xl z-20 font-normal text-center w-[80%] max-w-[600px] mx-auto"
+                >
+                  {data?.description}
+                </h3>
+                <Link
+                  to={`/product/${data?.id}`}
+                  style={{
+                    transition: "all 1.5s var(--transition)",
+                    background: `${data?.background}`,
+                  }}
+                  className="h-20 w-52 text-white rounded-full uppercase family2 text-lg md:text-xl font-black"
+                >
+                  <Curtain bgColor={"#000"}>View Product</Curtain>
+                </Link>
+                <div className="image image_2">
+                  <Image src={data?.images[2]} alt="" />
+                </div>
+                <div className="image image_3">
+                  <Image src={data?.images[0]} alt="" />
+                </div>
+                <div className="image image_1">
+                  <Image src={data?.images[1]} alt="" />
+                </div>
+              </div>
+            </ProductHeroStyles>
+          );
+        })}
+        <div className="absolute w-full z-40 flex items-center justify-center bottom-20 left-0">
+          <div className="flex items-center justify-center  gap-2">
+            {Array(3)
+              ?.fill("")
+              ?.map((data, index) => {
+                return (
+                  <div
+                    key={index}
+                    onClick={() => setTab(index)}
+                    className={`w-2 cursor-pointer ${
+                      tab === index ? "bg-[#000]" : "bg-[#9d9999]"
+                    } h-2 rounded-full`}
+                  ></div>
+                );
+              })}
           </div>
         </div>
-        <span className="text-xl md:text-4xl max-w-[1000px] leading-[1.4]">
-          Mirego is a multidisciplinary development, strategy, and design team
-          that powers the digital transformation of its partners.
-        </span>
-        <div className="p-2 family1 px-4 bg-[#000] hover:opacity-[.7] text-base text-white md:text-sm rounded-md">Learn more about the company</div>
       </div>
     </div>
   );
 };
 
 export default Hero;
+
+const ProductHeroStyles = styled.div`
+  background-color: inherit;
+  position: relative;
+  .image {
+    position: absolute;
+    width: 13rem;
+    height: 13rem;
+    z-index: 1;
+    &.image_1 {
+      width: 55%;
+      object-fit: cover;
+      left: 400px;
+      bottom: -10px;
+      width: 14rem;
+      height: 14rem;
+      @media (max-width: 780px) {
+        width: 12rem;
+        height: 12rem;
+        bottom: 40%;
+        left: 0%;
+      }
+    }
+    &.image_2 {
+      right: 40px;
+      top: 5%;
+      width: 14rem;
+      height: 14rem;
+      z-index: 50 !important;
+      @media (max-width: 780px) {
+        width: 12rem;
+        height: 12rem;
+        bottom: 40%;
+        right: 0%;
+      }
+    }
+    &.image_3 {
+      left: 200px;
+      top: 180px;
+      width: 10rem;
+      /* height: 10rem; */
+      z-index: 50 !important;
+      @media (max-width: 780px) {
+        left: 10%;
+        width: 7rem;
+        height: 7rem;
+      }
+    }
+  }
+  h3 {
+    width: 75%;
+    @media (max-width: 780px) {
+      width: 95%;
+      font-size: 24px;
+    }
+  }
+  .hero_wrapper {
+    position: relative;
+  }
+  .hero_info {
+    z-index: 10;
+    width: 70%;
+    padding: 2rem 0;
+  }
+  .image_wrappers {
+    width: 40%;
+    @media (max-width: 780px) {
+      width: 90%;
+    }
+  }
+`;

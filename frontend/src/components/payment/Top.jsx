@@ -5,7 +5,7 @@ import RoomPaymentTab from "./RoomPaymentTab";
 import { BiCheck, BiChevronLeft } from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
-import { slideup } from "@/constants/utils/framer";
+import { slideup } from "@/utils/framer";
 import FlutterPaymentButton from "./FlutterPaymentButton";
 export default function RoomInfo() {
   const { reservation, getsingleReservationisLoading } = useSelector(

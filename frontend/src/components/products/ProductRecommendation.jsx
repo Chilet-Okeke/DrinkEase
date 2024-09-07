@@ -2,10 +2,10 @@ import React from "react";
 import { styled } from "styled-components";
 import Image from "../common/Image";
 import { IoMdStar } from "react-icons/io";
-import { IoIosStarHalf } from "react-icons/io";
-import { productData } from "../../data/product";
+import { Link } from "react-router-dom";
 
-const ProductRecommendation = () => {
+const ProductRecommendation = ({ products }) => {
+  // console.log(products);
   return (
     <ProductrecommendationStyles
       style={{ gap: ".2rem" }}
@@ -28,39 +28,41 @@ const ProductRecommendation = () => {
             </div>
           </div>
           <div className="w-full py-2 grid mx-auto gap-4 md:grid-cols-2">
-            {productData.map((x, index) => {
+            {products?.map((x, index) => {
               return (
-                <ProductCard
-                  backgroundColor={x.backgroundcolor}
-                  className="flex w-full group item-center justify-center"
-                  key={index}
-                >
-                  <div className="product_card_wrapper gap-4 mx-auto flex flex-col">
-                    <div
-                      className="flex header flex-col"
-                      style={{ gap: ".5rem" }}
-                    >
-                      <h3
-                        style={{ fontSize: "26px", color: `${x.color}` }}
-                        color={x.color}
-                        className=" family3 text-center"
-                      >
-                        {x.text}
-                      </h3>
-                      <h5 className="fs-14 text-light family3 text-center">
-                        ${x.price} USD
-                      </h5>
-                    </div>
-                    <div className=" md:w-[200px] min-h-[200px] mx-auto">
+                <Link to={`/product/${x?.id}`} className="w-full">
+                  <ProductCard
+                    backgroundColor={x?.backgroundcolor}
+                    className="flex w-full group item-center justify-center"
+                    key={index}
+                  >
+                    <div className="product_card_wrapper gap-4 mx-auto flex flex-col">
                       <div
-                        style={{ transition: "all .6s" }}
-                        className="w-full group-hover:translate-y-0 translate-y-24"
+                        className="flex header flex-col"
+                        style={{ gap: ".5rem" }}
                       >
-                        <Image src={x.image} alt="" />
+                        <h3
+                          style={{ fontSize: "26px", color: `${x?.color}` }}
+                          color={x?.color}
+                          className=" family3 text-center"
+                        >
+                          {x?.title}
+                        </h3>
+                        <h5 className="fs-14 text-light family3 text-center">
+                          ${x?.price} USD
+                        </h5>
+                      </div>
+                      <div className=" md:w-[200px] min-h-[200px] mx-auto">
+                        <div
+                          style={{ transition: "all .3s" }}
+                          className="w-full group-hover:translate-y-0 translate-y-24"
+                        >
+                          <Image src={x?.images[0]} alt="" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </ProductCard>
+                  </ProductCard>
+                </Link>
               );
             })}
           </div>
@@ -126,10 +128,10 @@ const ProductRecommendation = () => {
             >
               <div className="w-[85%] left mx-auto flex item-center justify-center flex-col gap-4">
                 <div className="flex text-base items-center ">
-                  <IoMdStar/>
-                  <IoMdStar/>
-                  <IoMdStar/>
-                  <IoMdStar/>
+                  <IoMdStar />
+                  <IoMdStar />
+                  <IoMdStar />
+                  <IoMdStar />
                 </div>
                 <h3
                   style={{
@@ -211,7 +213,7 @@ const ProductrecommendationStyles = styled.div`
   .recommendCard {
     h3 {
       transform: translateY(50%);
-      transition: all 0.3s ease;
+      transition: all 0.3s var(--transition);
       @media (max-width: 780px) {
         transform: translateY(0%);
       }
