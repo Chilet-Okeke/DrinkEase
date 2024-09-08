@@ -61,7 +61,7 @@ export default function CartSidebar() {
                 <span className="font-bold family1">$ {totalPrice} USD</span>
               </div>
               <Link
-                to={`/`}
+                to={`/checkout`}
                 style={{
                   transition: "all 1.5s var(--transition)",
                 }}
