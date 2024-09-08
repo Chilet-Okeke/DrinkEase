@@ -35,7 +35,7 @@ export default function CartSidebar() {
             <RxCross1 />
           </span>
         </div>
-        {cart?.cart?.length !== 0 ? (
+        {cart?.length !== 0 ? (
           <div className="w-full h-full flex justify-between flex-col gap-4">
             <div className="w-full flex flex-col gap-4">
               {cart?.map((cartitems, index) => {
